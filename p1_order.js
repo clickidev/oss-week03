@@ -41,7 +41,15 @@ sleep(10).then(() => console.log("F"));
 
 console.log("G");
 
-// prediction:
-// actual:
+// prediction: A G D C F E B
+/* actual:
+  A
+  D
+  G
+  C
+  F
+  E
+  B
+*/
 // why I was wrong (one line per miss):
-//
+// async 함수는 첫 await 전까지 일반 함수처럼 바로 실행할 수 있다. 따라서 G보다 D가 먼저 출력됨이 맞다.
