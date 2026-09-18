@@ -50,7 +50,7 @@ export async function fetchForecastRaw({ latitude, longitude }, days = 3) {
   url.searchParams.set("latitude", latitude);
   url.searchParams.set("longitude", longitude);
   url.searchParams.set("current", "temperature_2m", "weather_code");
-  url.searchParams.set("daily", "temperature_2m_max, temperature_2m_min, weather_code")
+  url.searchParams.set("daily", "temperature_2m_max,temperature_2m_min,weather_code")
   url.searchParams.set("timezone", "auto");
   url.searchParams.set("forecast_days", days);
   // TODO: return await getJSON(url)
