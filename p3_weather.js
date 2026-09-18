@@ -49,7 +49,7 @@ export async function fetchForecastRaw({ latitude, longitude }, days = 3) {
   // TODO: 위 파라미터를 url.searchParams.set 으로 하나씩 넣는다
   url.searchParams.set("latitude", latitude);
   url.searchParams.set("longitude", longitude);
-  url.searchParams.set("current", "temperature_2m", "weather_code");
+  url.searchParams.set("current", "temperature_2m,weather_code");
   url.searchParams.set("daily", "temperature_2m_max,temperature_2m_min,weather_code")
   url.searchParams.set("timezone", "auto");
   url.searchParams.set("forecast_days", days);
@@ -74,14 +74,14 @@ export function parseForecast(raw) {
 
   return{
     now: {
-      temp: current.temparature_2m,
+      temp: current.temperature_2m,
       unit: current_units.temperature_2m,
       code: current.weather_code,
     },
     days: daily.time.map((date, i) => ({
       date,
       min: daily.temperature_2m_min[i],
-      max: daily.temperature_2m_min[i],
+      max: daily.temperature_2m_max[i],
       code: daily.weather_code[i],
     })),
   };
